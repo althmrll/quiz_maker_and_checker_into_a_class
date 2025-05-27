@@ -1,11 +1,5 @@
-def option_one():
-    options = []
-    question_with_choice=""
-    file = open("Untitled Quiz.txt", "w")
-    file.write("(IMPORTANT NOTE: Please change the filename of this quiz after checking as it may be deleted when creating"
-            " a new one. Delete this notice after. Thank you!)\n\n")
-
-    while True:
+class inputs:
+    def __init__(self, choice):
         question=input("Question:") #Asks user for input
         question_with_choice+=question+"\n"#Adds new line so choices will be written below the question"
         option_count = 0
@@ -33,18 +27,4 @@ def option_one():
                 question_with_choice=""
                 break
 
-            elif ask == "N" or ask == "n":
-                print("\nThank you for using basic quiz maker. Be sure to rename your file or else it will"
-                        "be replaced if you make a new quiz.FOr now, a notepad file will open which contians all the"
-                      "questions that you have inputted. Thank you!\n")
-                file.close()
-                os.startfile('Untitled Quiz.txt')
-                break
-
-            else:
-                print(".\n.\n.\nyou can only answer Y or N\n----------\n")
-                continue
-        if ask == "Y" or ask == "y":
-            continue
-        elif ask == "N" or ask == "n":
-            break
+            choice = (int(input("What do you want to do? Pick 1, 2, or, 3:")))
