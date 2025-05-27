@@ -14,3 +14,9 @@
     #features in all three
         #Confirmation message
 #Replay
+
+# Classes to create(?)
+    #text_messages( all default messages)
+    #option one
+    #option two (inherit text_messages to change message)
+    #replay
