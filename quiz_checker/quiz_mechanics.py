@@ -47,6 +47,11 @@ class quiz:
                 if self.asked_question==len(self.answer):
                     passing=len(self.answer)/2
                     if self.score>=passing:
+                        print(f"\n\nYou have finished the quiz and answered {self.score} questions out of {len(self.answer)}. Congrats!\n\n----------\n")
+                        break
+            
+                    else:
+                        print(f"\n\nYou have finished the quiz and answered {self.score} questions out of {len(self.answer)}. Better luck next time!\n\n----------\n")
                         break
 
                 else:
