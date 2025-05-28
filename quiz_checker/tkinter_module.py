@@ -22,8 +22,11 @@ class main_window:
         choose_file_window.mainloop()
     
     def choose_file(self):
-        global chosen_file
         chosen_file = filedialog.askopenfilename()
         if chosen_file:
             chosen_quiz=quiz()
             chosen_quiz.main_mechanics()
+
+if __name__=="__main__":
+    start_quiz_checker=main_window()
+    start_quiz_checker.main_window()
