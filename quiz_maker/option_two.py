@@ -20,7 +20,7 @@ class option_2:
             if not self.add_more(file):
                 import os
                 file.close()
-                os.startfile(file)
+                os.startfile(self.filename)
                 break
 
     def input_question(self):

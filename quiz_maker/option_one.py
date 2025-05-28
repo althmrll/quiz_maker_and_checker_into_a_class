@@ -3,7 +3,7 @@ class option_1:
         self.options = []
         self.question_with_choice=""
         self.option_count=0
-        self.file = file
+        self.file=file
 
     def option_mechanics(self):
         file=open(self.file,"w")
@@ -19,7 +19,7 @@ class option_1:
             if not self.add_more(file):
                 import os
                 file.close()
-                os.startfile(file)
+                os.startfile(self.file)
                 break
 
     def input_question(self):
