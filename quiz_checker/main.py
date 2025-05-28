@@ -1,5 +1,5 @@
-from tkinter_module import main_window
+from tkinter_module import MainWindow
 
 if __name__ == "__main__":
-    start_quiz_checker = main_window()
+    start_quiz_checker = MainWindow()
     start_quiz_checker.starting_window()

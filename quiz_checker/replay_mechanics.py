@@ -2,7 +2,7 @@ class Replay:
     def __init__(self, replay_choice):
         self.replay_choice=replay_choice
 
-    def replay_mechanics(self):
+    def replay_process(self):
         while True:
             replay=self.replay_choice(input("Do you want to answer another quiz?(Y/N)"))
             if replay.lower()=="y":

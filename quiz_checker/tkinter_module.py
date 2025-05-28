@@ -1,7 +1,7 @@
 import tkinter as tk_module
 from tkinter import filedialog
-from quiz_mechanics import quiz
-from replay_mechanics import replay
+from quiz_mechanics import Quiz
+from replay_mechanics import Replay
 
 class MainWindow:
     def __init__(self):
@@ -26,9 +26,9 @@ class MainWindow:
         chosen_file = filedialog.askopenfilename()
         if chosen_file:
             self.choose_file_window.withdraw()
-            chosen_quiz=quiz(chosen_file, self.lines)
+            chosen_quiz=Quiz(chosen_file, self.lines)
             chosen_quiz.main_mechanics()
-            replay_game= replay()
-            replay_game.replay_mechanics()
+            replay_game= Replay()
+            replay_game.replay_process()
             self.choose_file_window.deiconify()
             self.choose_file()
