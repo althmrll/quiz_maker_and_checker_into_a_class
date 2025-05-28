@@ -1,11 +1,11 @@
 class option_one:
-    def __init__(self, options, question_with_choice,option_count, file):
+    def __init__(self, file):
         self.options = []
         self.question_with_choice=""
         self.option_count=0
         self.file = file
 
-    def option_one_mechanics(self, file):
+    def option_mechanics(self, file):
         file=open("Untitled Quiz.txt", "w")
         file.write("(IMPORTANT NOTE: Please change the filename of this quiz after checking as it may be deleted when creating"
                 " a new one. Delete this notice after. Thank you!)\n\n")
@@ -16,7 +16,7 @@ class option_one:
             answer=input("Input correct answer:")
             file.write("Correct Answer: "+answer+"\n")
 
-            if not option_one.aadd_more(self, file):
+            if not option_one.add_more(self, file):
                 import os
                 file.close()
                 os.startfile('Untitled Quiz.txt')
@@ -39,7 +39,7 @@ class option_one:
             question_with_choice += f"{chr(ord('a')+options_item_index)}. {option} \n"
             file.write(question_with_choice)
     
-    def aadd_more(self, file):
+    def add_more(self, file):
         while True:
             ask = input("\nAdd another question?(Y/N)")
             if ask == "Y" or ask == "y":
