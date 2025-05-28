@@ -2,6 +2,7 @@ import tkinter as tk_module
 from tkinter import filedialog
 from quiz_mechanics import quiz
 from results import results_mechanics
+from replay_mechanics import replay
 
 class main_window:
     def __init__(self, choose_file_window):
@@ -30,6 +31,8 @@ class main_window:
             chosen_quiz.main_mechanics()
             results=results_mechanics()
             results.finish()
+            replay_game= replay()
+            replay_game.replay_mechanics()
 
 if __name__=="__main__":
     start_quiz_checker=main_window()

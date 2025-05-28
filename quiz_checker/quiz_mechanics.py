@@ -7,6 +7,8 @@ class quiz:
         self.find_word="Correct Answer:"
         self.questions_asked=[]
         self.asked_question=0
+        self.question_counter=0
+        self.score=0
 
     def main_mechanics(self):
         file=open(self.file,"r")
@@ -43,15 +45,15 @@ class quiz:
             percentage=fraction*100
             while True:
                 if self.asked_question==len(self.answer):
-                    ...#use yung result chuchu
+                    break
 
                 else:
                     if self.question_with_choice[random_index] in self.questions_asked:
                         break
 
                     else:
-                        print(f"\n----------\n\n{question_counter} questions asked out of {len(self.answer)} ({percentage} % done)")
-                        print(f"Score:{score}\n")
+                        print(f"\n----------\n\n{self.question_counter} questions asked out of {len(self.answer)} ({percentage} % done)")
+                        print(f"Score:{self.score}\n")
                         print(self.question_with_choice[random_index])
                         self.questions_asked.append(self.question_with_choice[random_index])
                         user_answer=input("Your answer:")
@@ -59,10 +61,11 @@ class quiz:
 
                         if user_answer==self.answer[random_index]:
                             print("\nCorrect!!")
-                            ...#add score?
+                            self.score=self.score+1
+                            self.question_counter=self.question_counter+1
                             break
                         else:
                             print("\nWrong, the correct answer is", self.answer[random_index])
-                            asked_question=asked_question+1
-                            question_counter=question_counter+1
+                            self.asked_question=self.asked_question+1
+                            self.question_counter=self.question_counter+1
                             break
