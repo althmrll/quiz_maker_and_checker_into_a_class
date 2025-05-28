@@ -3,7 +3,7 @@ class option_one:
         self.options = []
         self.question_with_choice=""
         self.option_count = 0
-    
+
     def create_new_quiz(self):
         file = open("Untitled Quiz.txt", "w")
         file.write("(IMPORTANT NOTE: Please change the filename of this quiz after checking as it may be deleted when creating"
