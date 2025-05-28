@@ -17,7 +17,7 @@ class MainWindow:
         "choose which quiz you want to answer.") #Ask user the quiz they want to answer.
         opening_message.pack()
 
-        choose_quiz_button = tk_module.Button(self.choose_file_window, text="Choose Quiz", command=lambda: self.choose_file(self.lines))
+        choose_quiz_button = tk_module.Button(self.choose_file_window, text="Choose Quiz", command=self.choose_file)
         choose_quiz_button.pack()
 
         self.choose_file_window.mainloop()
@@ -25,10 +25,11 @@ class MainWindow:
     def choose_file(self):
         chosen_file = filedialog.askopenfilename()
         if chosen_file:
+            with open(chosen_file, 'r') as file:
+                line = file.readlines() 
             self.choose_file_window.withdraw()
-            chosen_quiz=Quiz(chosen_file, self.lines)
+            chosen_quiz=Quiz(chosen_file, line)
             chosen_quiz.main_mechanics()
             replay_game= Replay()
             replay_game.replay_process()
             self.choose_file_window.deiconify()
-            self.choose_file()

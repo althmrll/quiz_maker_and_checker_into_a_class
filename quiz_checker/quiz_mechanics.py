@@ -1,5 +1,5 @@
 class Quiz:
-    def __init__(self, file_path, lines):
+    def __init__(self, file_path, line):
         self.format_question_and_options=[]
         self.question_with_choice=[]
         self.file=file_path
@@ -9,19 +9,16 @@ class Quiz:
         self.asked_question=0
         self.question_counter=0
         self.score=0
-        self.line=lines
+        self.line=line
 
-    def main_mechanics(self, lines):
-        with open(self.file, "r") as file:
-            self.lines = file.readlines()
-
+    def main_mechanics(self):
         while True:
             self.question_with_choice_formatting()
             self.ask_question_and_answer()
 
 
-    def question_with_choice_formatting(self, lines):
-        for indiv_lines in lines:
+    def question_with_choice_formatting(self):
+        for indiv_lines in self.line:
             if indiv_lines!="\n":
                 if indiv_lines.startswith(self.find_word):
                     formatted_answer=str(indiv_lines)
