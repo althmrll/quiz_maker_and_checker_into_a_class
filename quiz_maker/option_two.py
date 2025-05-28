@@ -39,7 +39,8 @@ class option_2:
 
         for options_item_index, option in enumerate(self.options):
             self.question_with_choice += f"{chr(ord('a')+options_item_index)}. {option} \n"
-            file.write(self.question_with_choice)
+            
+        file.write(self.question_with_choice)
     
     def add_more(self, file):
         while True:
@@ -50,7 +51,7 @@ class option_2:
                 file.write(new_line)
                 self.question_with_choice=""
                 self.option_count=0
-                break
+                return True
 
             elif ask.lower() == "n":
                 print("\nThank you for using basic quiz maker. The file you have edited will now be opened so you can"
