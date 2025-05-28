@@ -14,7 +14,7 @@ class main_menu:
                 choice = (int(input("What do you want to do? Pick 1, 2, or, 3:")))
                 if choice==1:
                     print("\n----------\n\nYou have chosen 'CREATE QUIZ'\n")
-                    new_quiz=option_1(open('Untitled Quiz',"w"))
+                    new_quiz=option_1("Untitled Quiz.txt")
                     new_quiz.option_mechanics()
 
                 if choice==2:
