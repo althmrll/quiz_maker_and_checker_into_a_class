@@ -17,14 +17,15 @@ class main_menu:
                 choice = (int(input("What do you want to do? Pick 1, 2, or, 3:")))
                 if choice==1:
                     print("\n----------\n\nYou have chosen 'CREATE QUIZ'\n")
-                    option_one()
+                    new_quiz=option_one(open("Untitled Quiz.txt", "w"))
+                    new_quiz.option_mechanics(self)
 
                 if choice==2:
                     print("\n----------\n\nYou have chosen 'EDIT EXISTING QUIZ'")
                     filename=input("\nInput filename of quiz you want to edit(be mindful with the cases and spaces):")
                     print("\n")
-                    filename=filename+'.txt'
-                    option_two()
+                    filename=option_two(filename+'.txt')
+                    filename.option_mechanics(self, filename)
 
                 elif choice==3:
                     print("\n----------\n\nYou have chosen 'EXIT'\n\n\nGoodbye!")

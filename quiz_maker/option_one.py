@@ -1,17 +1,16 @@
 class option_one:
-    def __init__(self, file):
+    def __init__(self, options, question_with_choice, option_count, file):
         self.options = []
         self.question_with_choice=""
         self.option_count=0
         self.file = file
 
     def option_mechanics(self, file):
-        file=open("Untitled Quiz.txt", "w")
         file.write("(IMPORTANT NOTE: Please change the filename of this quiz after checking as it may be deleted when creating"
                 " a new one. Delete this notice after. Thank you!)\n\n")
         
         while True:
-            option_one.input_question()
+            option_one.input_question(self)
             option_one.input_and_format_options
             answer=input("Input correct answer:")
             file.write("Correct Answer: "+answer+"\n")
@@ -29,14 +28,14 @@ class option_one:
             options.clear() #clears items in options list, so the number from preceding numbers re not printed
                             #again in the following numbers.
 
-    def input_and_format_options(self, options, file):
+    def input_and_format_options(self, options, option_count, question_with_choice, file):
         while option_count!=4:#So user will be asked for 4 options
             option = input("Add option:")#Ask user for option
-            options.append(option)#Adds user's input into 'options' list
-            option_count = option_count + 1 #Adds one count to inputted options to keep tract how any are added.
+            self.options.append(option)#Adds user's input into 'options' list
+            self.option_count = option_count + 1 #Adds one count to inputted options to keep tract how any are added.
 
         for options_item_index, option in enumerate(options):
-            question_with_choice += f"{chr(ord('a')+options_item_index)}. {option} \n"
+            self.question_with_choice += f"{chr(ord('a')+options_item_index)}. {option} \n"
             file.write(question_with_choice)
     
     def add_more(self, file):
@@ -46,7 +45,8 @@ class option_one:
                 new_line="\n"
                 print("\n----------\n")
                 file.write(new_line)
-                question_with_choice=""
+                self.question_with_choice=""
+                self.option_count=0
                 break
 
             elif ask == "N" or ask == "n":
