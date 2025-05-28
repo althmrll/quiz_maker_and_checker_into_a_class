@@ -20,5 +20,25 @@ class option_two(option_one):
             if not option_one.add_more(self, file):
                 import os
                 file.close()
-                os.startfile('Untitled Quiz.txt')
+                os.startfile(filename)
                 break
+    
+    def add_more(self, file):
+        while True:
+            ask = input("\nAdd another question?(Y/N)")
+            if ask == "Y" or ask == "y":
+                
+                new_line="\n"
+                file.write(new_line)
+                print("\n----------\n")
+                question_with_choice=""
+                break
+
+            elif ask == "N" or ask == "n":
+                print("\nThank you for using basic quiz maker. The file you have edited will now be opened so you can"
+                      "check the changes.\n")
+                return False
+
+            else:
+                print(".\n.\n.\nyou can only answer Y or N\n----------\n")
+                continue
