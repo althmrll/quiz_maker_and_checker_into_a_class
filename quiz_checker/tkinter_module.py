@@ -1,15 +1,16 @@
 import tkinter as tk_module
 from tkinter import filedialog
 from quiz_mechanics import quiz
+from results import results_mechanics
 
 class main_window:
-    def __init__(self):
-        pass
+    def __init__(self, choose_file_window):
+        self.choose_file_window=choose_file_window
 
-    def main_window(self):
-        choose_file_window = tk_module.Tk()
-        choose_file_window.title("QUIZ CHECKER")
-        choose_file_window.geometry("1000x100") 
+    def main_window(self, choose_file_window):
+        self.choose_file_window = tk_module.Tk()
+        self.choose_file_window.title("QUIZ CHECKER")
+        self.choose_file_window.geometry("1000x100") 
         opening_message = tk_module.Label(choose_file_window, text="QUIZ CHECKER\nThis program is used so you can answer the quiz you " \
         "just created uisng basic quiz creator. You can also use this so other people can answer your created quiz.\n Note that" \
         "this will not work if you use other quizzes, not created using basic quiz maker. Otherwise, click the button below to" \
@@ -19,13 +20,16 @@ class main_window:
         choose_quiz_button = tk_module.Button(choose_file_window, text="Choose Quiz", command=self.choose_file)
         choose_quiz_button.pack()
 
-        choose_file_window.mainloop()
+        self.choose_file_window.mainloop()
     
-    def choose_file(self):
+    def choose_file(self, choose_file_window):
         chosen_file = filedialog.askopenfilename()
         if chosen_file:
-            chosen_quiz=quiz()
+            self.choose_file_window.withdraw()
+            chosen_quiz=quiz(chosen_file)
             chosen_quiz.main_mechanics()
+            results=results_mechanics()
+            results.finish()
 
 if __name__=="__main__":
     start_quiz_checker=main_window()
