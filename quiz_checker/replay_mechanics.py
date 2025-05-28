@@ -1,6 +1,5 @@
 class replay:
     def __init__(self, replay_choice):
-        super().__init__()
         self.replay_choice=replay_choice
 
     def replay_mechanics(self):
