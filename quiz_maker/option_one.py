@@ -6,7 +6,7 @@ class option_1:
         self.file = file
 
     def option_mechanics(self):
-        file=self.file(open('Untitled Quiz.txt',"w"))
+        file=open(self.file,"w")
         file.write("(IMPORTANT NOTE: Please change the filename of this quiz after checking as it may be deleted when creating"
                 " a new one. Delete this notice after. Thank you!)\n\n")
         

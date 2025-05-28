@@ -35,5 +35,5 @@ class main_menu:
                 print(".\n.\n.\nYou can only pick between 1, 2, and 3.\n\n----------\n")
 
 if __name__ == "__main__":
-    menu=main_menu
+    menu=main_menu()
     menu.menu_mechanics()

@@ -29,6 +29,7 @@ class option_2:
             self.question_with_choice+=question+"\n"#Adds new line so choices will be written below the question"
             self.options.clear() #clears items in options list, so the number from preceding numbers re not printed
                             #again in the following numbers.
+            break
 
     def input_and_format_options(self, file):
         while self.option_count!=4:#So user will be asked for 4 options
