@@ -1,4 +1,4 @@
-class replay:
+class Replay:
     def __init__(self, replay_choice):
         self.replay_choice=replay_choice
 

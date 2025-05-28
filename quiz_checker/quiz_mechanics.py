@@ -1,4 +1,4 @@
-class quiz:
+class Quiz:
     def __init__(self, file_path, lines):
         self.format_question_and_options=[]
         self.question_with_choice=[]
@@ -16,7 +16,7 @@ class quiz:
             self.lines = file.readlines()
 
         while True:
-            self.question_with_choice_formatting(file)
+            self.question_with_choice_formatting()
             self.ask_question_and_answer()
 
 
