@@ -1,7 +1,6 @@
 import tkinter as tk_module
 from tkinter import filedialog
 from quiz_mechanics import quiz
-from results import results_mechanics
 from replay_mechanics import replay
 
 class main_window:
@@ -29,8 +28,6 @@ class main_window:
             self.choose_file_window.withdraw()
             chosen_quiz=quiz(chosen_file)
             chosen_quiz.main_mechanics()
-            results=results_mechanics()
-            results.finish()
             replay_game= replay()
             replay_game.replay_mechanics()
 
