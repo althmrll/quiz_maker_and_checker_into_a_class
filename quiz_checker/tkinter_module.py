@@ -30,6 +30,10 @@ class main_window:
             chosen_quiz.main_mechanics()
             replay_game= replay()
             replay_game.replay_mechanics()
+            self.choose_file_window.deiconify()
+            choose_again=main_window()
+            choose_again.choose_file()
+
 
 if __name__=="__main__":
     start_quiz_checker=main_window()
