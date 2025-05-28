@@ -1,40 +1,57 @@
-import option_one
+class option_2:
+    def __init__(self, filename):
+        self.options = []
+        self.question_with_choice=""
+        self.option_count=0
+        self.filename = filename
 
-class option_two(option_one):
-    def __init__(self, options, question_with_choice, option_count, filename):
-        self.filename=filename
-        super.__init__(options, question_with_choice, option_count)
-    
-    def option_mechanics(self, filename):
-        file = open(filename, "a")
+    def option_mechanics(self):
+        file = open(self.filename, "a")
         space="\n"
         file.write(space)
         file.write("(This is the start of your editing using quiz maker. Delete this after checking. Thank you!)\n\n")
         
         while True:
-            option_one.input_question(self)
-            option_one.input_and_format_options
+            self.input_question()
+            self.input_and_format_options(file)
             answer=input("Input correct answer:")
             file.write("Correct Answer: "+answer+"\n")
 
-            if not option_one.add_more(self, file):
+            if not self.add_more(file):
                 import os
                 file.close()
-                os.startfile(filename)
+                os.startfile(file)
                 break
+
+    def input_question(self):
+        while True:
+            question=input("Question:") #Asks user for input
+            self.question_with_choice+=question+"\n"#Adds new line so choices will be written below the question"
+            self.options.clear() #clears items in options list, so the number from preceding numbers re not printed
+                            #again in the following numbers.
+
+    def input_and_format_options(self, file):
+        while self.option_count!=4:#So user will be asked for 4 options
+            option = input("Add option:")#Ask user for option
+            self.options.append(option)#Adds user's input into 'options' list
+            self.option_count = self.option_count + 1 #Adds one count to inputted options to keep tract how any are added.
+
+        for options_item_index, option in enumerate(self.options):
+            self.question_with_choice += f"{chr(ord('a')+options_item_index)}. {option} \n"
+            file.write(self.question_with_choice)
     
     def add_more(self, file):
         while True:
             ask = input("\nAdd another question?(Y/N)")
-            if ask == "Y" or ask == "y":
-                
+            if ask.lower()=="y":
                 new_line="\n"
-                file.write(new_line)
                 print("\n----------\n")
-                question_with_choice=""
+                file.write(new_line)
+                self.question_with_choice=""
+                self.option_count=0
                 break
 
-            elif ask == "N" or ask == "n":
+            elif ask.lower() == "n":
                 print("\nThank you for using basic quiz maker. The file you have edited will now be opened so you can"
                       "check the changes.\n")
                 return False
