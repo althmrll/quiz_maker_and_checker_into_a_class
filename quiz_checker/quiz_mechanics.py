@@ -7,7 +7,7 @@ class Quiz:
         self.find_word="Correct Answer:"
         self.questions_asked=[]
         self.asked_question=0
-        self.question_counter=1
+        self.question_counter=0
         self.score=0
         self.line=line
 
@@ -37,16 +37,16 @@ class Quiz:
         while self.question_counter<len(self.answer):
             random_index=random.randint(0,len(self.answer)-1)
 
-            if self.question_with_choice[random_index] in self.questions_asked:
+            if random_index in self.questions_asked:
                 continue
 
             else:
+                self.questions_asked.append(random_index)
                 fraction=self.asked_question/len(self.answer)
                 percentage=fraction*100
-                print(f"\n----------\n\n{self.question_counter} questions asked out of {len(self.answer)} ({percentage} % done)")
+                print(f"\n----------\n\n{self.question_counter+1} questions asked out of {len(self.answer)} ({percentage} % done)")
                 print(f"Score:{self.score}\n")
                 print(self.question_with_choice[random_index])
-                self.questions_asked.append(self.question_with_choice[random_index])
                 user_answer=input("Your answer:")
                 user_answer=user_answer.upper().strip()
 
@@ -55,13 +55,11 @@ class Quiz:
                     self.score=self.score+1
                     self.question_counter=self.question_counter+1
                     self.asked_question=self.asked_question+1
-                    continue
 
                 else:
                     print("\nWrong, the correct answer is", self.answer[random_index])
                     self.asked_question=self.asked_question+1
                     self.question_counter=self.question_counter+1
-                    continue
 
         passing=len(self.answer)/2
         if self.score>=passing:
