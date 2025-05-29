@@ -1,4 +1,4 @@
-class option_2:
+class OptionTwo:
     def __init__(self, filename):
         self.options = []
         self.question_with_choice=""

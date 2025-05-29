@@ -1,5 +1,5 @@
-from option_one import option_1
-from option_two import option_2
+from option_one import OptionOne
+from option_two import OptionTwo
 
 class main_menu:
     def menu_mechanics(self):
@@ -14,14 +14,14 @@ class main_menu:
                 choice = (int(input("What do you want to do? Pick 1, 2, or, 3:")))
                 if choice==1:
                     print("\n----------\n\nYou have chosen 'CREATE QUIZ'\n")
-                    new_quiz=option_1("Untitled Quiz.txt")
+                    new_quiz=OptionOne("Untitled Quiz.txt")
                     new_quiz.option_mechanics()
 
                 if choice==2:
                     print("\n----------\n\nYou have chosen 'EDIT EXISTING QUIZ'")
                     filename=input("\nInput filename of quiz you want to edit(be mindful with the cases and spaces):")
                     print("\n")
-                    filename=option_2(filename+'.txt')
+                    filename=OptionTwo(filename+'.txt')
                     filename.option_mechanics()
 
                 elif choice==3:
