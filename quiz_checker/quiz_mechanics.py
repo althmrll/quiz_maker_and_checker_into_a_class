@@ -19,21 +19,25 @@ class Quiz:
 
     def question_with_choice_formatting(self):
         for indiv_lines in self.line:
-            if indiv_lines!="\n":
-                if indiv_lines.startswith(self.find_word):
+
+            if indiv_lines.strip()=="":
+                if self.format_question_and_options:
+                    self.format_question_and_option = "".join(self.format_question_and_options)
+                    self.question_with_choice.append(self.format_question_and_option)
+                    self.format_question_and_options.clear()
+            
+            elif indiv_lines.startswith(self.find_word):
                     formatted_answer=str(indiv_lines)
                     formatted_answer=formatted_answer.replace(self.find_word,"").replace("\n","").upper().strip()
                     self.answer.append(formatted_answer)
-                else:
-                    self.format_question_and_options.append(indiv_lines)
+        
+            else:
+                self.format_question_and_options.append(indiv_lines)
 
-            elif indiv_lines=="\n" or indiv_lines=="":
-                formatted_question_and_option="".join(self.format_question_and_options)
-                self.question_with_choice.append(formatted_question_and_option)
-                self.format_question_and_options.clear()
-                
-        formatted_question_and_option="".join(self.format_question_and_options)
-        self.question_with_choice.append(formatted_question_and_option)
+        if self.format_question_and_options:
+            formatted_q = "".join(self.format_question_and_options)
+            self.question_with_choice.append(formatted_q.strip())
+
     def ask_question_and_answer(self):    
         import random
         while len(self.questions_asked)<len(self.answer):
