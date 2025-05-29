@@ -31,10 +31,12 @@ class Quiz:
                 formatted_question_and_option="".join(self.format_question_and_options)
                 self.question_with_choice.append(formatted_question_and_option)
                 self.format_question_and_options.clear()
-
+                
+        formatted_question_and_option="".join(self.format_question_and_options)
+        self.question_with_choice.append(formatted_question_and_option)
     def ask_question_and_answer(self):    
         import random
-        while self.question_counter<len(self.answer):
+        while len(self.questions_asked)<len(self.answer):
             random_index=random.randint(0,len(self.answer)-1)
 
             if random_index in self.questions_asked:
