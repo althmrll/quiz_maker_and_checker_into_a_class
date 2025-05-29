@@ -1,10 +1,10 @@
 class Replay:
-    def __init__(self, replay_choice):
-        self.replay_choice=replay_choice
+    def __init__(self):
+        pass
 
     def replay_process(self):
         while True:
-            replay=self.replay_choice(input("Do you want to answer another quiz?(Y/N)"))
+            replay=input("Do you want to answer another quiz?(Y/N)")
             if replay.lower()=="y":
                 break
             elif replay.lower()=="n":
