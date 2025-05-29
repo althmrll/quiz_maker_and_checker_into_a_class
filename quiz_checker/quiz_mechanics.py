@@ -36,39 +36,36 @@ class Quiz:
         import random
         while self.question_counter<len(self.answer):
             random_index=random.randint(0,len(self.answer)-1)
-            fraction=self.asked_question/len(self.answer)
-            percentage=fraction*100
-            while True:
-                if self.question_with_choice[random_index] in self.questions_asked:
-                    break
-                
-                elif self.asked_question==len(self.answer):
-                    passing=len(self.answer)/2
-                    if self.score>=passing:
-                        print(f"\n\nYou have finished the quiz and answered {self.score} questions out of {len(self.answer)}. Congrats!\n\n----------\n")
-                        break
-            
-                    else:
-                        print(f"\n\nYou have finished the quiz and answered {self.score} questions out of {len(self.answer)}. Better luck next time!\n\n----------\n")
-                        break
+
+            if self.question_with_choice[random_index] in self.questions_asked:
+                continue
+
+            else:
+                fraction=self.asked_question/len(self.answer)
+                percentage=fraction*100
+                print(f"\n----------\n\n{self.question_counter} questions asked out of {len(self.answer)} ({percentage} % done)")
+                print(f"Score:{self.score}\n")
+                print(self.question_with_choice[random_index])
+                self.questions_asked.append(self.question_with_choice[random_index])
+                user_answer=input("Your answer:")
+                user_answer=user_answer.upper().strip()
+
+                if user_answer==self.answer[random_index]:
+                    print("\nCorrect!!")
+                    self.score=self.score+1
+                    self.question_counter=self.question_counter+1
+                    self.asked_question=self.asked_question+1
+                    continue
 
                 else:
-                    print(f"\n----------\n\n{self.question_counter} questions asked out of {len(self.answer)} ({percentage} % done)")
-                    print(f"Score:{self.score}\n")
-                    print(self.question_with_choice[random_index])
-                    self.questions_asked.append(self.question_with_choice[random_index])
-                    user_answer=input("Your answer:")
-                    user_answer=user_answer.upper().strip()
+                    print("\nWrong, the correct answer is", self.answer[random_index])
+                    self.asked_question=self.asked_question+1
+                    self.question_counter=self.question_counter+1
+                    continue
 
-                    if user_answer==self.answer[random_index]:
-                        print("\nCorrect!!")
-                        self.score=self.score+1
-                        self.question_counter=self.question_counter+1
-                        self.asked_question=self.asked_question+1
-                        break
+        passing=len(self.answer)/2
+        if self.score>=passing:
+            print(f"\n\nYou have finished the quiz and answered {self.score} questions out of {len(self.answer)}. Congrats!\n\n----------\n")
 
-                    else:
-                        print("\nWrong, the correct answer is", self.answer[random_index])
-                        self.asked_question=self.asked_question+1
-                        self.question_counter=self.question_counter+1
-                        break
+        if self.score<passing:
+            print(f"\n\nYou have finished the quiz and answered {self.score} questions out of {len(self.answer)}. Better luck next time!\n\n----------\n")
