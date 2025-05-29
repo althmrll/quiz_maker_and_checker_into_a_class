@@ -40,7 +40,7 @@ class Quiz:
             percentage=fraction*100
             while True:
                 if self.question_with_choice[random_index] in self.questions_asked:
-                    continue
+                    break
                 
                 elif self.asked_question==len(self.answer):
                     passing=len(self.answer)/2
