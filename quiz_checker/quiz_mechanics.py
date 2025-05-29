@@ -12,7 +12,6 @@ class Quiz:
         self.line=line
 
     def main_mechanics(self):
-        while True:
             self.question_with_choice_formatting()
             self.ask_question_and_answer()
 
